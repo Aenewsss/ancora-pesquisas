@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function About() {
     return (
-        <section className="py-16 text-center flex flex-col items-center">
+        <section className="py-4 text-center flex flex-col items-center">
             <Image width={183} height={157} src="/logo.svg" alt="logo âncora" />
             <h2 className="text-yellow text-3xl font-bold mb-6">Âncora Pesquisas e Publicidade</h2>
             <p className="max-w-2xl mx-auto text-lg">
