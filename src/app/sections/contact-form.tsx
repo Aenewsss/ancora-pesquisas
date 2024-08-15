@@ -5,13 +5,13 @@ export default function ContactForm() {
         <section className="py-20 relative">
             <Image unoptimized className="object-cover absolute top-0 left-0 z-0 w-full h-full" src="/header.png" width={300} height={300} alt="Hero" />
             <div className="container mx-auto relative z-10 flex justify-center">
-                <div className="flex gap-44">
+                <div className="flex md:gap-44 gap-10 flex-wrap">
                     <div className="flex flex-col gap-8">
-                        <div className="flex flex-col gap-3">
+                        <div className="flex flex-col gap-3 md:text-start text-center">
                             <h2 className="text-3xl">Descubra o potencial da Âncora!</h2>
                             <p>Entre em contato agora mesmo</p>
                         </div>
-                        <div className="flex flex-wrap gap-4 items-center">
+                        <div className="flex flex-wrap gap-4 items-center justify-center">
                             <div className="h-40 flex flex-col gap-1 justify-center items-center bg-white p-8 rounded-xl">
                                 <Image src="/icons/phone.svg" width={40} height={40} alt="Telefone" />
                                 <h3 className="text-xl font-bold text-primary">Phone</h3>
