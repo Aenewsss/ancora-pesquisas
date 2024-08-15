@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className="container mx-auto pb-8">
+        <footer className="container mx-auto pb-8 mt-20">
             <div className="flex justify-between items-center">
                 <Image width={225} height={72} src="/extended-logo-yellow.svg" alt="Logo extendida" />
 
@@ -16,9 +17,12 @@ export default function Footer() {
                     </ul>
                 </div>
             </div>
+
+            <hr className="my-8"/>
+            
             <div className="flex justify-between items-center">
                 <div className="flex gap-4">
-
+                    <Link href="instagram"><Image width={20} height={20} src="/icons/insta.svg" alt="Logo extendida" /></Link>
                 </div>
                 <span>Todos os direitos reservados - 2024</span>
             </div>
