@@ -11,7 +11,7 @@ export default function Footer() {
                     <ul className="flex space-x-2 uppercase font-semibold flex-wrap justify-center md:mt-0 mt-4">
                         <li><a href="#" className="flex gap-2">Quem Somos <span className="text-yellow">\</span></a></li>
                         <li><a href="#" className="flex gap-2">Serviços <span className="text-yellow">\</span></a></li>
-                        <li><a href="#" className="flex gap-2">Galeria <span className="text-yellow">\</span></a></li>
+                        <li><a href="/galeria" className="flex gap-2">Galeria <span className="text-yellow">\</span></a></li>
                         <li><a href="#" className="flex gap-2">Notícias <span className="text-yellow">\</span></a></li>
                         <li><a href="#">Contato</a></li>
                     </ul>

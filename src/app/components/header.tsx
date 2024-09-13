@@ -1,10 +1,13 @@
 import Image from "next/image"
+import Link from "next/link"
 
 export default function Header() {
     return (
         <header className="py-4 bg-blue">
             <nav className="container mx-auto flex md:flex-row flex-col justify-between items-center">
+                <Link className="z-10 md:w-auto w-36" href="/">
                 <Image className="z-10 md:w-auto w-36" width={225} height={72} src="/extended-logo-yellow.svg" alt="Logo extendida" />
+                </Link>
                 
                 <div className="flex md:flex-row flex-col z-10 md:gap-8 gap-4 items-center md:mt-0 mt-4">
                     <ul className="flex md:flex-nowrap flex-wrap justify-center space-x-2 uppercase font-semibold">

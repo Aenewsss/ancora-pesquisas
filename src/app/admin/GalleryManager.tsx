@@ -107,7 +107,7 @@ function GalleryManager() {
     <div className="flex flex-col gap-10 items-center">
       <h2 className="text-3xl font-medium text-center">Gerenciamento da galeria</h2>
 
-      <div className="flex justify-between items-start w-full">
+      <div className="flex justify-between items-start w-full flex-wrap gap-y-10">
         <form className="flex flex-col gap-2" onSubmit={handleUpload}>
           <h2>Formulário galeria</h2>
           <label className="w-60 cursor-pointer bg-white text-gray-400 px-4 py-2 rounded-md mt-4" htmlFor="file_gallery">

@@ -72,7 +72,7 @@ function BannerManager() {
     <div className="flex flex-col gap-10 items-center">
       <h2 className="text-3xl font-medium text-center">Gerenciamento do banner do topo</h2>
 
-      <div className="flex justify-between items-start w-full">
+      <div className="flex justify-between items-start w-full flex-wrap gap-y-10">
       <form className="flex flex-col gap-2">
           <h2>Formulário banner</h2>
 
