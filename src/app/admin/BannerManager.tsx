@@ -61,6 +61,8 @@ function BannerManager() {
           setBannerPreviewUrl(null);
           setUploadProgress(0);
           alert('Banner inserido com sucesso!');
+          location.reload()
+
         });
       }
     );

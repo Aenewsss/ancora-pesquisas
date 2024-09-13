@@ -86,6 +86,8 @@ function NewsManager() {
           setSubtitle(''); // Clear subtitle field
           setText(''); // Clear text field
           alert('Notícia adicionada com sucesso!');
+          location.reload()
+
         });
       }
     );

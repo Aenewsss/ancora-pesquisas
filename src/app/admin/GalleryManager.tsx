@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { getDownloadURL, ref as refStorage, uploadBytesResumable } from "firebase/storage";
-import { ref as refDatabase, push, get } from "firebase/database";
+import { getDownloadURL, ref as refStorage, uploadBytesResumable, deleteObject } from "firebase/storage";
+import { ref as refDatabase, push, get, remove, set } from "firebase/database";
 import { database, storage } from "@/firebase";
 
 function GalleryManager() {
   const [galleryImage, setGalleryImage] = useState<File | null>(null);
-  const [galleryImages, setGalleryImages] = useState<string[]>([]); // Array to hold gallery images
+  const [galleryImages, setGalleryImages] = useState<any[]>([]); // Array to hold gallery images with keys
   const [uploadProgress, setUploadProgress] = useState(0);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null); // Preview URL for the selected image
 
@@ -15,7 +15,11 @@ function GalleryManager() {
     get(galleryRef).then((snapshot) => {
       if (snapshot.exists()) {
         const data = snapshot.val();
-        const images = Object.values(data).map((item: any) => item.url); // Extract URLs from the snapshot
+        const images = Object.entries(data).map(([key, value]) => ({
+          key, // Store the key for each image
+          // @ts-ignore
+          url: value.url
+        })); // Extract URLs and keys from the snapshot
         setGalleryImages(images); // Set the gallery images
       }
     }).catch((error) => {
@@ -57,18 +61,46 @@ function GalleryManager() {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           const galleryRef = refDatabase(database, 'gallery');
-          push(galleryRef, { url: downloadURL });
+          const newGalleryRef = push(galleryRef); // Get a new reference for the new image
+          set(newGalleryRef, { url: downloadURL });
 
           // Update gallery images list with the new image
-          setGalleryImages((prevImages) => [...prevImages, downloadURL]);
+          setGalleryImages((prevImages) => [...prevImages, { key: newGalleryRef.key, url: downloadURL }]);
 
           setUploadProgress(0);
           setGalleryImage(null); // Reset the selected image
           setPreviewUrl(null); // Clear the preview
           alert('Imagem adicionada a galeria!');
+          location.reload()
+
         });
       }
     );
+  };
+
+  // Function to remove an image from database and storage
+  const handleRemove = (image: any) => {
+    const imageKey = image.key;
+    const imageUrl = image.url;
+
+    // Remove the image entry from the database
+    const imageRef = refDatabase(database, `gallery/${imageKey}`);
+    remove(imageRef).then(() => {
+      // Delete the image from storage
+      const storageRef = refStorage(storage, imageUrl);
+      deleteObject(storageRef)
+        .then(() => {
+          // Remove the image from the state
+          setGalleryImages((prevImages) => prevImages.filter((item) => item.key !== imageKey));
+          alert('Imagem removida com sucesso!');
+          location.reload()
+        })
+        .catch((error) => {
+          console.error('Error removing image from storage:', error);
+        });
+    }).catch((error) => {
+      console.error('Error removing image from database:', error);
+    });
   };
 
   return (
@@ -109,8 +141,16 @@ function GalleryManager() {
           <h2>Galeria de fotos</h2>
           <div className="flex flex-wrap gap-4 mt-4">
             {galleryImages.length > 0 ? (
-              galleryImages.map((url, index) => (
-                <img key={index} src={url} alt={`Gallery Image ${index}`} className="w-40 h-40 object-cover rounded-md border" />
+              galleryImages.map((image, index) => (
+                <div key={index} className="relative">
+                  <img src={image.url} alt={`Gallery Image ${index}`} className="w-40 h-40 object-cover rounded-md border" />
+                  <button
+                    onClick={() => handleRemove(image)}
+                    className="absolute top-0 right-0 bg-red-500 text-white p-1 rounded-full"
+                  >
+                    ✕
+                  </button>
+                </div>
               ))
             ) : (
               <p className="text-orange-400">Nenhuma imagem na galeria no momento.</p>

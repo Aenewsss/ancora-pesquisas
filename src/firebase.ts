@@ -3,16 +3,15 @@ import { getDatabase } from 'firebase/database';
 import { getStorage } from 'firebase/storage';
 import 'firebase/storage';
 
-console.log(process.env.NEXT_PUBLIC_FIREBASE_CONFIG)
-
 const firebaseConfig = {
-    apiKey: "AIzaSyCmZJnc4RpddHa3SGnuvmce0X_mcR4dFmg",
-    authDomain: "ancora-pesquisas.firebaseapp.com",
-    projectId: "ancora-pesquisas",
-    storageBucket: "ancora-pesquisas.appspot.com",
-    messagingSenderId: "337142212771",
-    appId: "1:337142212771:web:d2ea9e19b54402a1813716",
-    measurementId: "G-Q4WNLKXQHX"
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+    measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+    databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
 };
 
 const app = initializeApp(firebaseConfig);
