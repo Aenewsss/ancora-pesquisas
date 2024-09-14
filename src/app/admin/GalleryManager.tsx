@@ -62,6 +62,14 @@ function GalleryManager() {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           const galleryRef = refDatabase(database, 'gallery');
           const newGalleryRef = push(galleryRef); // Get a new reference for the new image
+          const isImage = (url: string) => {
+            return /\.(jpg|jpeg|png|gif|bmp|webp|svg)$/.test(url);
+          };
+
+          // Function to check if the URL is a video
+          const isVideo = (url: string) => {
+            return /\.(mp4|webm|ogg|mov|avi|mkv)$/.test(url);
+          };
           set(newGalleryRef, { url: downloadURL });
 
           // Update gallery images list with the new image
@@ -71,7 +79,7 @@ function GalleryManager() {
           setGalleryImage(null); // Reset the selected image
           setPreviewUrl(null); // Clear the preview
           alert('Imagem adicionada a galeria!');
-          location.reload()
+          // location.reload()
 
         });
       }
@@ -114,7 +122,7 @@ function GalleryManager() {
             Nova imagem para a galeria
           </label>
           <input
-            accept="image/*"
+            accept="image/*, video/*"
             required
             id="file_gallery"
             hidden
@@ -141,17 +149,36 @@ function GalleryManager() {
           <h2>Galeria de fotos</h2>
           <div className="flex flex-wrap gap-4 mt-4">
             {galleryImages.length > 0 ? (
-              galleryImages.map((image, index) => (
-                <div key={index} className="relative">
-                  <img src={image.url} alt={`Gallery Image ${index}`} className="w-40 h-40 object-cover rounded-md border" />
-                  <button
-                    onClick={() => handleRemove(image)}
-                    className="absolute top-0 right-0 bg-red-500 text-white p-1 rounded-full"
-                  >
-                    ✕
-                  </button>
-                </div>
-              ))
+              galleryImages.map((image, index) => {
+                const isImage = (url: string) => {
+                  return /\.(jpg|jpeg|png|gif|bmp|webp|svg)(\?.*)?$/.test(url);
+                };
+
+                const isVideo = (url: string) => {
+                  return /\.(mp4|webm|ogg|mov|avi|mkv)(\?.*)?$/.test(url);
+                }
+
+                return (
+                  <div key={index} className="relative">
+                    {isImage(image.url) ? (
+                      <img src={image.url} alt={image.url} className="w-40 h-40 object-cover rounded-md border" />
+                    ) : isVideo(image.url) ? (
+                      <video controls className="w-40 h-40 object-cover rounded-md border">
+                        <source src={image.url} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    ) : (
+                      <p>Unsupported media format</p>
+                    )}
+                    <button
+                      onClick={() => handleRemove(image)}
+                      className="absolute top-0 right-0 bg-red-500 text-white p-1 rounded-full"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                )
+              })
             ) : (
               <p className="text-orange-400">Nenhuma imagem na galeria no momento.</p>
             )}

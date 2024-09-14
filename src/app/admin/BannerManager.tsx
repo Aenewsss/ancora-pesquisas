@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { deleteObject, getDownloadURL, ref as refStorage, uploadBytesResumable } from "firebase/storage";
+import { getDownloadURL, ref as refStorage, uploadBytesResumable } from "firebase/storage";
 import { ref as refDatabase, set, get, remove } from "firebase/database";
 import { database, storage } from "@/firebase";
 
@@ -73,7 +73,7 @@ function BannerManager() {
       <h2 className="text-3xl font-medium text-center">Gerenciamento do banner do topo</h2>
 
       <div className="flex justify-between items-start w-full flex-wrap gap-y-10">
-      <form className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2">
           <h2>Formulário banner</h2>
 
           <label className="w-60 cursor-pointer bg-white  text-gray-400 px-4 py-2 rounded-md" htmlFor="file_banner">
@@ -90,7 +90,7 @@ function BannerManager() {
           </button>
 
           {uploadProgress > 0 && <progress value={uploadProgress} max="100" />}
-        </form> 
+        </div> 
         
         <div>
           {currentBannerUrl ? (

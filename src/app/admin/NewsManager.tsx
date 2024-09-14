@@ -149,7 +149,7 @@ function NewsManager() {
           <label className="w-60 cursor-pointer bg-white text-gray-400 px-4 py-2 rounded-md" htmlFor="file">
             Foto da notícia
           </label>
-          <input accept="image/*" id="file" hidden type="file" onChange={handleImageChange} />
+          <input accept="image/*, video/*" id="file" hidden type="file" onChange={handleImageChange} />
 
           {/* Preview of selected image */}
           {previewUrl && (
@@ -173,20 +173,40 @@ function NewsManager() {
         <div className="flex flex-col gap-4 mt-8">
           <h2>Notícias:</h2>
           {news.length > 0 ? (
-            news.map((newsItem, index) => (
-              <div key={index} className="flex flex-col items-center gap-2 p-2 border rounded-md w-80">
-                <img src={newsItem.imageUrl} alt={newsItem.title} className="w-full object-cover rounded-md" />
-                <h3 className="text-xl font-medium">Título: {newsItem.title}</h3>
-                <h4 className="text-lg font-light">Subtítulo: {newsItem.subtitle}</h4>
-                <p>Texto: {newsItem.text}</p>
-                <button
-                  onClick={() => handleRemove(newsItem)}
-                  className="bg-red-500 text-white rounded-md px-4 py-2"
-                >
-                  Remover
-                </button>
-              </div>
-            ))
+            news.map((newsItem, index) => {
+              const isImage = (url: string) => {
+                return /\.(jpg|jpeg|png|gif|bmp|webp|svg)(\?.*)?$/.test(url);
+              };
+
+              const isVideo = (url: string) => {
+                return /\.(mp4|webm|ogg|mov|avi|mkv)(\?.*)?$/.test(url);
+              }
+              
+              return (
+
+                <div key={index} className="flex flex-col items-center gap-2 p-2 border rounded-md w-80">
+                  {isImage(newsItem.imageUrl) ? (
+                    <img src={newsItem.imageUrl} alt={newsItem.title} className="w-40 h-40 object-cover rounded-md" />
+                  ) : isVideo(newsItem.imageUrl) ? (
+                    <video controls className="rounded-md w-40 h-40">
+                      <source src={newsItem.imageUrl} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : (
+                    <p>Unsupported media format</p>
+                  )}
+                  <h3 className="text-xl font-medium">Título: {newsItem.title}</h3>
+                  <h4 className="text-lg font-light">Subtítulo: {newsItem.subtitle}</h4>
+                  <p>Texto: {newsItem.text}</p>
+                  <button
+                    onClick={() => handleRemove(newsItem)}
+                    className="bg-red-500 text-white rounded-md px-4 py-2"
+                  >
+                    Remover
+                  </button>
+                </div>
+              )
+            })
           ) : (
             <p className="text-orange-400">Nenhuma notícia disponível no momento.</p>
           )}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto_Condensed } from "next/font/google";
 import "./globals.css";
+import Head from "next/head";
 
 const roboto_condensed = Roboto_Condensed({ subsets: ["latin"] });
 
@@ -16,6 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
+      <Head>
+        <link rel="shortcut icon" href="/logo.svg" type="image/x-icon" />
+      </Head>
+
       <body className={roboto_condensed.className}>{children}</body>
     </html>
   );
