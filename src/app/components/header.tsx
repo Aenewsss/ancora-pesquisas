@@ -17,7 +17,7 @@ export default function Header() {
                         <li className="flex items-center"><a href="/galeria" className="items-center flex gap-2"><span className="bg-yellow rounded-full px-4 py-2 text-blue">Galeria</span> </a></li>
                         <li className="flex items-center"><a className="bg-yellow rounded-full px-4 py-2 text-blue" href="/#contact">Contato</a></li>
                     </ul>
-                    <a href="#budget" className="bg-yellow rounded-full px-4 py-2  text-blue font-bold">FAÇA SEU ORÇAMENTO</a>
+                    <a href="/orcamento" className="bg-yellow rounded-full px-4 py-2  text-blue font-bold">FAÇA SEU ORÇAMENTO</a>
                 </div>
             </nav>
         </header>
