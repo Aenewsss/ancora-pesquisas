@@ -13,7 +13,8 @@ export default function Footer() {
                         <li><a href="/#services" className="flex gap-2">Serviços <span className="text-yellow">\</span></a></li>
                         <li><a href="/galeria" className="flex gap-2">Galeria <span className="text-yellow">\</span></a></li>
                         <li><a href="/#news" className="flex gap-2">Notícias <span className="text-yellow">\</span></a></li>
-                        <li><a href="/#contact">Contato</a></li>
+                        <li><a href="/#contact" className="flex gap-2">Contato <span className="text-yellow">\</span></a></li>
+                        <li><a href="/trabalhe-conosco">Trabalhe Conosco</a></li>
                     </ul>
                 </div>
             </div>
