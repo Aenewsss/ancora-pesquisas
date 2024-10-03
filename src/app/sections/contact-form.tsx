@@ -13,16 +13,16 @@ export default function ContactForm() {
                             <p>Entre em contato agora mesmo</p>
                         </div>
                         <div className="flex flex-wrap gap-4 items-center justify-center">
-                            <Link target="_blank" href="https://api.whatsapp.com/send?phone=5571999460468&text=Olá, venho através do site e gostaria de mais informações!" className="h-40 flex flex-col gap-1 justify-center items-center bg-white p-8  min-w-[300px] rounded-xl">
+                            <Link target="_blank" href="https://api.whatsapp.com/send?phone=5571999460468&text=OOlá, seja bem-vindo(a) a Âncora Pesquisas e Publicidade, como podemos ajudar ?" className="h-40 flex flex-col gap-1 justify-center items-center bg-white p-8  min-w-[300px] rounded-xl">
                                 <Image src="/icons/phone.svg" width={40} height={40} alt="Telefone" />
                                 <h3 className="text-xl font-bold text-primary">WhatsApp</h3>
                                 <p className="text-sm text-black">+55 71 9 9946-0468</p>
 
                             </Link>
-                            <Link target="_blank" href="mailto:ancora.pesquisas06@hotmail.com" className="h-40 flex flex-col gap-1 justify-center items-center bg-white p-8  min-w-[300px] rounded-xl">
+                            <Link target="_blank" href="mailto:ancora.pesquisas06@gmail.com" className="h-40 flex flex-col gap-1 justify-center items-center bg-white p-8  min-w-[300px] rounded-xl">
                                 <Image src="/icons/mail.svg" width={40} height={40} alt="Telefone" />
                                 <h3 className="text-xl font-bold text-primary">Email</h3>
-                                <p className="text-sm text-black">ancora.pesquisas06@hotmail.com</p>
+                                <p className="text-sm text-black">ancora.pesquisas06@gmail.com</p>
                             </Link>
                         </div>
                     </div>

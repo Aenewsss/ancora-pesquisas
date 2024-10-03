@@ -5,8 +5,6 @@ export default function Gallery() {
 
     return (
         <main>
-
-            <Header />
             <section className="min-h-screen p-10 bg-primary text-white relative">
                 <Image className="w-full absolute opacity-10 h-full z-0" width={431} height={370} src="logo.svg" alt="Logo Âncora" />
                 <h2 className="text-yellow text-3xl font-bold mb-6 text-center">Solicite seu Orçamento Personalizado</h2>
