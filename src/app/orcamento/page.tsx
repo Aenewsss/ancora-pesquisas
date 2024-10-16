@@ -23,9 +23,10 @@ export default function Gallery() {
         } else if (Part3) {
             setPart3(false)
             setPart4(true)
+            alert('Faça o cadastro  para realizar o orçamento')
         }
     }
-    
+
 
     useEffect(() => {
         if (state) {
@@ -36,13 +37,13 @@ export default function Gallery() {
     return (
         <main>
             <section className="min-h-screen p-10 bg-primary text-white relative">
-                <Image className="w-full absolute opacity-10 h-full z-0" width={431} height={370} src="logo.svg" alt="Logo Âncora" />
+                <Image className="w-full absolute opacity-10 h-full z-0 top-0 left-0" width={431} height={370} src="logo.svg" alt="Logo Âncora" />
                 <h2 className="text-yellow text-3xl font-bold mb-6 text-center">Solicite seu Orçamento Personalizado</h2>
                 <div className="flex flex-col gap-8 justify-center items-center flex-wrap mt-20 relative">
                     <Image className="md:w-auto w-44" width={431} height={370} src="logo.svg" alt="Logo Âncora" />
                     <form action={action} className="min-w-[400px]">
                         <input
-                            style={{ height: !Part1 ? 0 : 'auto', visibility: !Part1 ? 'hidden' : 'visible' }}
+                            style={{ height: !Part1 ? 0 : 'auto', visibility: !Part1 ? 'hidden' : 'visible', padding: !Part1 ? 0 : 8 }}
                             name="municipio"
                             required
                             type="text"
@@ -50,7 +51,7 @@ export default function Gallery() {
                             className="py-2 px-4 rounded-md text-black w-full"
                         />
                         <input
-                            style={{ height: !Part2 ? 0 : 'auto', visibility: !Part2 ? 'hidden' : 'visible' }}
+                            style={{ height: !Part2 ? 0 : 'auto', visibility: !Part2 ? 'hidden' : 'visible', padding: !Part2 ? 0 : 8 }}
                             name="qtt_eleitores"
                             required
                             type="text"
@@ -59,7 +60,8 @@ export default function Gallery() {
                         />
 
 
-                        <div style={{ height: !Part3 ? 0 : 'auto', visibility: !Part3 ? 'hidden' : 'visible' }} className="flex gap-1">
+                        <label className="text-2xl" style={{ height: !Part3 ? 0 : 'auto', visibility: !Part3 ? 'hidden' : 'visible' }} htmlFor="">Qual pesquisa você deseja fazer ?</label>
+                        <div style={{ height: !Part3 ? 0 : 'auto', visibility: !Part3 ? 'hidden' : 'visible' }} className="mt-3 flex gap-1">
                             <input value="Pesquisa Eleitoral" name="tipo_pesquisa" required type="radio" />
                             <label htmlFor="">Pesquisa Eleitoral</label>
                         </div>
@@ -74,6 +76,7 @@ export default function Gallery() {
 
                         <div style={{ height: !Part4 ? 0 : 'auto', visibility: !Part4 ? 'hidden' : 'visible' }} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <input
+                                style={{ padding: !Part4 ? 0 : 8 }}
                                 required
                                 name="nome"
                                 type="text"
@@ -81,6 +84,7 @@ export default function Gallery() {
                                 className="py-2 px-4 rounded-md text-black w-full"
                             />
                             <input
+                                style={{ padding: !Part4 ? 0 : 8 }}
                                 required
                                 name="email"
                                 type="email"
@@ -88,12 +92,14 @@ export default function Gallery() {
                                 className="py-2 px-4 rounded-md text-black w-full"
                             />
                             <input
+                                style={{ padding: !Part4 ? 0 : 8 }}
                                 type="text"
                                 name="telefone"
                                 placeholder="Telefone"
                                 className="py-2 px-4 rounded-md text-black w-full"
                             />
                             <input
+                                style={{ padding: !Part4 ? 0 : 8 }}
                                 name="assunto"
                                 type="text"
                                 placeholder="Assunto"
