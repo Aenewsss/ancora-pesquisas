@@ -36,12 +36,12 @@ export default function Gallery() {
 
     return (
         <main>
-            <section className="min-h-screen p-10 bg-primary text-white relative">
+            <section className="min-h-screen md:p-10 p-2 bg-primary text-white relative">
                 <Image className="w-full absolute opacity-10 h-full z-0 top-0 left-0" width={431} height={370} src="logo.svg" alt="Logo Âncora" />
                 <h2 className="text-yellow text-3xl font-bold mb-6 text-center">Solicite seu Orçamento Personalizado</h2>
                 <div className="flex flex-col gap-8 justify-center items-center flex-wrap mt-20 relative">
                     <Image className="md:w-auto w-44" width={431} height={370} src="logo.svg" alt="Logo Âncora" />
-                    <form action={action} className="min-w-[400px]">
+                    <form action={action} className="md:min-w-[400px]">
                         <input
                             style={{ height: !Part1 ? 0 : 'auto', visibility: !Part1 ? 'hidden' : 'visible', padding: !Part1 ? 0 : 8 }}
                             name="municipio"
