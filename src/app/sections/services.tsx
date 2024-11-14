@@ -11,7 +11,7 @@ export default function Services() {
                     <Image className="absolute h-full" width={126} height={108} src="/logo-yellow.svg" alt="Logo amarela" />
                 </div>
                 <div className="flex justify-center relative">
-                    <Image unoptimized className="w-full" src="/services/consulting.png" width={300} height={300} alt="Serviço" />
+                    <Image unoptimized className="w-full object-cover" src="/new-photos/4.jpeg" width={300} height={300} alt="Serviço" />
                     <h3 className="tracking-wide text-center uppercase absolute bottom-6 text-xl font-medium mt-4">Consultoria<br />Especializada</h3>
                     <Image className="absolute h-full" width={126} height={108} src="/logo-white.svg" alt="Logo amarela" />
                 </div>

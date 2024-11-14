@@ -15,7 +15,7 @@ export default function Hero() {
 
                 if (snapshot.exists()) {
                     const data = snapshot.val();
-                    setBannerImageUrl(data.url); // Assuming the image URL is stored as 'url'
+                    // setBannerImageUrl(data.url); // Assuming the image URL is stored as 'url'
                 } else {
                     console.error("No banner image found.");
                 }
@@ -34,7 +34,7 @@ export default function Hero() {
             {bannerImageUrl ?
                 <Image unoptimized className="object-cover absolute top-0 left-0 z-0 w-full h-full" src={bannerImageUrl} width={300} height={300} alt="Hero" />
                 :
-                <Image unoptimized className="object-cover absolute top-0 left-0 z-0 w-full h-full" src="/header.png" width={300} height={300} alt="Hero" />
+                <Image unoptimized className="object-cover absolute top-0 left-0 z-0 w-full h-full object-top" src="/new-photos/2.jpeg" width={300} height={300} alt="Hero" />
             }
             <div className="absolute bg-gradient-to-b from-transparent to-primary bottom-0 left-0 z-0 w-full h-40" />
         </section>
